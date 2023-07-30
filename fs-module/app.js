@@ -15,6 +15,8 @@ function makeDirectory() {
     });
     console.log('Folder created successfully!')
 }
+console.log(makeDirectory());
+
 
 function writeToFile() {
     writeFile(join(folderPath, 'user.js'), 'Hello World', (err) => {
@@ -24,6 +26,8 @@ function writeToFile() {
     });
     console.log('File written successfully!')
 }
+console.log(writeToFile());
+
 
 
 function renameDirectory() {
@@ -34,8 +38,9 @@ function renameDirectory() {
     });
     console.log('Directory renamed successfully!')
 }
+console.log(renameDirectory())
 
-function reWriteToFile(){
+function reWriteToFile() {
     writeFile(join(newFolderPath, 'user.js'), myName, (err) => {
         if (err) {
             console.log(err);
@@ -43,8 +48,9 @@ function reWriteToFile(){
     });
     console.log('File written successfully!')
 }
+console.log(reWriteToFile())
 
-function appendToFile(){
+function appendToFile() {
     appendFile(join(newFolderPath, 'user.js'), moreDetails, err => {
         if (err) {
             console.log(err);
@@ -52,8 +58,9 @@ function appendToFile(){
     })
     console.log('File appended successfully!')
 }
+console.log(appendToFile())
 
-function renameFile(){
+function renameFile() {
     rename(join(newFolderPath, 'user.js'), join(folderPath, 'usman.js'), (err) => {
         if (err) {
             console.log(err);
@@ -62,36 +69,32 @@ function renameFile(){
     })
     console.log('file renamed successfully!')
 }
+console.log(renameFile())
 
-function readContent(){
+function readContent() {
     readFile(join(newFolderPath, 'usman.js'), (err, data) => {
         if (err) throw err;
         console.log(data);
-      });
+    });
 
-      console.log('file read successfully!')
+    console.log('file read successfully!')
 }
+console.log(readContent())
 
-function deleteFile(){
+function deleteFile() {
     unlink(join(newFolderPath, 'usman.js'), (err) => {
         if (err) throw err;
     })
     console.log('File deleted succesfully')
 }
+console.log(deleteFile())
 
-function deleteDirectory(){
+
+function deleteDirectory() {
     unlink(newFolderPath, (err) => {
         if (err) throw err
     });
     console.log('folder deleted succesfully!')
 }
-
-console.log(makeDirectory());
-console.log(writeToFile());
-console.log(renameDirectory())
-console.log(reWriteToFile())
-console.log(appendToFile())
-console.log(renameFile())
-console.log(readContent())
-console.log(deleteFile())
 console.log(deleteDirectory())
+
