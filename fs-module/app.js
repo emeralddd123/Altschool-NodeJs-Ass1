@@ -1,19 +1,20 @@
-import { mkdir, writeFile, appendFile, rename, readFile, unlink } from 'fs';
+import { mkdir, writeFile, appendFile, rename, readFile, unlink, rmdir } from 'fs';
 import { resolve, join } from 'path';
 
 let cwd = resolve()
 let folderPath = join(cwd, 'Students');
 let newFolderPath = join(cwd, 'Names');
 let myName = 'Usman Abdulsalam'
-let moreDetails = `age: 21\n sex:Male \n phone number: 0905763XXXX \n role:Backend Engineer`
+let moreDetails = `age: 21\n sex:Male \n phoneNumber: 0905763XXXX \n role:Backend Engineer`
 
 function makeDirectory() {
     mkdir(folderPath, (err) => {
         if (err) {
             console.log(err);
         }
+        console.log('Folder created successfully!')
     });
-    console.log('Folder created successfully!')
+
 }
 console.log(makeDirectory());
 
@@ -23,8 +24,9 @@ function writeToFile() {
         if (err) {
             console.log(err);
         }
+        console.log('File written successfully!')
+
     });
-    console.log('File written successfully!')
 }
 console.log(writeToFile());
 
@@ -35,8 +37,9 @@ function renameDirectory() {
         if (err) {
             console.log(err);
         }
+        console.log('Directory renamed successfully!')
+
     });
-    console.log('Directory renamed successfully!')
 }
 console.log(renameDirectory())
 
@@ -45,8 +48,9 @@ function reWriteToFile() {
         if (err) {
             console.log(err);
         }
+        console.log('File written successfully!')
+
     });
-    console.log('File written successfully!')
 }
 console.log(reWriteToFile())
 
@@ -55,46 +59,50 @@ function appendToFile() {
         if (err) {
             console.log(err);
         }
+        console.log('File appended successfully!')
+
     })
-    console.log('File appended successfully!')
 }
 console.log(appendToFile())
 
 function renameFile() {
-    rename(join(newFolderPath, 'user.js'), join(folderPath, 'usman.js'), (err) => {
+    rename(join(newFolderPath, 'user.js'), join(newFolderPath, 'usman.js'), (err) => {
         if (err) {
             console.log(err);
         }
-
+        console.log('file renamed successfully!')
     })
-    console.log('file renamed successfully!')
+
 }
 console.log(renameFile())
 
 function readContent() {
-    readFile(join(newFolderPath, 'usman.js'), (err, data) => {
+    readFile(join(newFolderPath, 'usman.js'), 'utf-8', (err, data) => {
         if (err) throw err;
         console.log(data);
+        console.log('file read successfully!')
+
     });
 
-    console.log('file read successfully!')
 }
 console.log(readContent())
 
 function deleteFile() {
     unlink(join(newFolderPath, 'usman.js'), (err) => {
         if (err) throw err;
+        console.log('File deleted succesfully')
+
     })
-    console.log('File deleted succesfully')
 }
 console.log(deleteFile())
 
 
 function deleteDirectory() {
-    unlink(newFolderPath, (err) => {
+    rmdir(newFolderPath, (err) => {
         if (err) throw err
+        console.log('folder deleted succesfully!')
     });
-    console.log('folder deleted succesfully!')
+
 }
 console.log(deleteDirectory())
 
